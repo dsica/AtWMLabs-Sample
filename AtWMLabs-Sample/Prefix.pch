@@ -1,0 +1,31 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#define isPadDevice (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define WMMakeWeakSelf() __weak __typeof__(self) weakSelf = self
+#define WMMakeStrongSelf() __typeof__(self) strongSelf = weakSelf
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "WMNetworkManager.h"
+#import "WMProduct.h"
+#import "MBProgressHUD.h"
+
+#import "UIColor+Palette.h"
+#import "UIImage+WMAdditions.h"
+
+static inline BOOL IsEmpty(id thing) {
+    return thing == nil ||
+    thing == [NSNull null] ||
+    ([thing respondsToSelector:@selector(length)] && [(NSData *)thing length] == 0) ||
+    ([thing respondsToSelector:@selector(count)]  && [(NSArray *)thing count] == 0);
+}
+
+#endif
